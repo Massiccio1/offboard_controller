@@ -1,0 +1,7 @@
+launch:
+
+- node:
+    pkg: "offboard_controller"
+    exec: "offboard_controller"
+    name: "offboard_controller"
+    output: "screen"

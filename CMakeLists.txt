@@ -16,7 +16,18 @@ if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 endif()
 
 # find dependencies
+
+
 find_package(ament_cmake REQUIRED)
+find_package(builtin_interfaces REQUIRED)
+# find_package(eigen3_cmake_module REQUIRED)
+# find_package(Eigen3 REQUIRED)
+# find_package(geometry_msgs REQUIRED)
+find_package(px4_msgs REQUIRED)
+find_package(rclcpp REQUIRED)
+# find_package(sensor_msgs REQUIRED)
+
+
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -31,5 +42,14 @@ if(BUILD_TESTING)
   #set(ament_cmake_cpplint_FOUND TRUE)
   ament_lint_auto_find_test_dependencies()
 endif()
+
+# examples/offboard/offboard_control
+add_executable(offboard_control src/offboard_controller.cpp)
+ament_target_dependencies(offboard_control rclcpp px4_msgs)
+install(TARGETS offboard_control DESTINATION lib/${PROJECT_NAME})
+
+# Install launch files.
+install(DIRECTORY launch DESTINATION share/${PROJECT_NAME}/)
+
 
 ament_package()
