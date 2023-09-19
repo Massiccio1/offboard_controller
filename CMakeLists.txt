@@ -44,9 +44,9 @@ if(BUILD_TESTING)
 endif()
 
 # examples/offboard/offboard_control
-add_executable(offboard_control src/offboard_controller.cpp)
-ament_target_dependencies(offboard_control rclcpp px4_msgs)
-install(TARGETS offboard_control DESTINATION lib/${PROJECT_NAME})
+add_executable(offboard_controller src/offboard_controller.cpp)
+ament_target_dependencies(offboard_controller rclcpp px4_msgs)
+install(TARGETS offboard_controller DESTINATION lib/${PROJECT_NAME})
 
 # Install launch files.
 install(DIRECTORY launch DESTINATION share/${PROJECT_NAME}/)
